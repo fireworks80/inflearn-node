@@ -46,3 +46,40 @@ npm i -D nodemon
 ```
 
 -D 옵션은 개발 할때만 사용하는 모듈설치시 사용
+
+package.json에 있는 모듈설치하기
+
+```
+npm i
+```
+
+전역 설치
+
+- 명령어로 사용 할 수 있다
+
+```
+npm i -g rimraf
+```
+
+전역설치 하면 package.json에 기록되지 않는다.
+그래서 dependencies / devDependencies로 설치후
+커멘트 창에서 'npx' 를 앞에 붙여서 사용하면 글로벌 명령어로 사용 할 수 있다.
+
+package-lock.json
+
+- 정확한 버전 기록 됨 (dependencies로 설치한 모듀들의 dependencies들의 버전까지 나온다.)
+- 버전 문제가 생기는 것을 막는다.
+
+## version
+
+- 노트 패키지의 버전은 SemVer(유의적 버저닝)방식
+- Major(주 버전), Minor(부 버전), Patch(수 버전)
+- Major: 하위 버전과 호환되지 않은 수정 사항이 생겼을때 올림
+- Monor: 하위 버전과 호환되는 수정 사항이 생겼을때 올림
+- Patch: 기능에 버그를 해결했을때 올림
+
+## 버전 기호
+
+- ^1 : 뒤의 Minor, patch는 어떤 수가 올라가도 상관 없지만 Major은 무조건 1이어야 한다.
+- ~1.1: Major, Minor까지는 일치 시킨다. (~은 잘 사용하지 않는다.)
+- 1.1.1(기호가 없을때): Major, Minor, patch 세자리 다 고정이다.
