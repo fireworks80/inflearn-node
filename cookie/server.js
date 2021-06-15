@@ -4,6 +4,7 @@ const url = require('url');
 const qs = require('querystring');
 
 const parseCookies = (cookie = '') => {
+  console.log(cookie);
   return cookie
     .split(';')
     .map((v) => v.split('='))

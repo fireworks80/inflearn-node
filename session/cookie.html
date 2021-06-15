@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap,
+    .wrap * {
+      outline: 1px solid;
+    }
+
+    .wrap {
+      display: flow-root;
+      background-color: plum;
+    }
+
+    .float {
+      float: left;
+      width: 150px;
+      height: 200px;
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="float">I am float</div>
+    <p>I am content</p>
+  </div>
+
+
+  <form action="/login">
+    <p>
+      <input type="text" name="name">
+      <button>send</button>
+    </p>
+  </form>
+</body>
+
+</html>
