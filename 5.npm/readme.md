@@ -83,3 +83,19 @@ package-lock.json
 - ^1 : 뒤의 Minor, patch는 어떤 수가 올라가도 상관 없지만 Major은 무조건 1이어야 한다.
 - ~1.1: Major, Minor까지는 일치 시킨다. (~은 잘 사용하지 않는다.)
 - 1.1.1(기호가 없을때): Major, Minor, patch 세자리 다 고정이다.
+
+## npm 명령어
+
+- [npm cli document](https://docs.npmjs.com/cli/v7/commands)
+
+### 자주사용하는 명령어
+
+- npm outdated: 어떤 패키지에 기능 변화가 생겼는지 알 수 있다.
+- npm uninstall: 패키지를 삭제 가능
+- npm search
+- npm info <패키지명>: 패키지 정보
+
+```
+# package.json에 따라 업데이트 된다.
+npm update
+```
