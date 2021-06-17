@@ -2,17 +2,12 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const app = express();
 
-app.set('port', process.env.PORT || 3001);
-
 app.use(morgan('dev'));
-app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(session());
+
+app.set('port', process.env.PORT || 3001);
 
 app.get('/', (req, res) => {
   const name = req.cookies.visitors || 0;
