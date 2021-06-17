@@ -283,12 +283,67 @@ res.writeHead();
 res.end()
 ```
 
-를 사용했지만
-
-express에서는
+를 사용했지만 express에서는
 
 ```
 res.send()
 ```
 
 하나로 처리하도록 되었다.
+
+```
+app.get('/', (req, res) => {
+  res.json({});
+});
+
+// res.json()이 return 이 아니므로 함수가 종료되는 것이 아니다.
+```
+
+### next()
+
+next()는 다음 미들웨어를 실행시키지만 next(인수)가 들어가게 되면 에러처리 미들웨어로 넘어간다.
+
+```
+app.use((req, res, next) => {
+  console.log('1 요청 실행');
+  next();
+}, (req, res, next) => {
+  try {
+    console.log('에러야');
+  } catch (error) {
+    next(error);
+  }
+});
+...
+
+app.use((err, req, res, next) => {
+  console.log(에러발생);
+});
+```
+
+### next('route')
+
+```
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+
+  // 조건에 맞게 라우터를 컨트롤 할 수 있다.
+  // 같은 라우터에서 조건에 맞으면 다음 라우트의 미들웨어를 실행
+  // 아니면 현재 라우트의 다음 미들웨어를 실행한다.
+
+  if (true) {
+    next('route');
+  } else {
+    next();
+  }
+
+}, (req, res, next) => {
+  console.log('run 1');
+});
+
+app.get('/', (req, res) => {
+  console.log('run 2');
+});
+
+
+```

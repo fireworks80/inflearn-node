@@ -13,8 +13,15 @@ app.use(
     console.log('2. 공통 부분');
     next();
   },
+  // (req, res, next) => {
+  //   throw new Error('에러');
+  // }
   (req, res, next) => {
-    throw new Error('에러');
+    try {
+      console.log(djah);
+    } catch (error) {
+      next(error);
+    }
   }
 );
 
@@ -44,7 +51,7 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error(err);
+  console.error('err', err);
   res.send('에러발생');
 });
 
