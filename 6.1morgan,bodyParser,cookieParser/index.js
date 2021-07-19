@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const multer = require('multer');
 const app = express();
 
 app.set('port', process.env.PORT || 3001);

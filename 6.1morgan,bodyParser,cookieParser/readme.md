@@ -64,3 +64,8 @@ app.get('/', (req, res) => {
 ## multer
 
 form에서 이미지, file 전송할 때 body parser에서 처리하지 못하므로 multer 사용
+
+```
+<form enctype="multipart/form-data">
+...
+```
