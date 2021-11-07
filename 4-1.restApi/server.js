@@ -27,6 +27,9 @@ http
           return res.end(JSON.stringify(users));
         }
 
+        // url에 해당하는 path가 없을 경우
+        // front.js 해당 폴더에서 url에 해당하는 파일을 읽어서 내려 준다.
+        // 파일을 내려 주지 않으면 pending에 걸린다.
         try {
           const data = await fs.readFile(`./${url}`);
           return res.end(data);
