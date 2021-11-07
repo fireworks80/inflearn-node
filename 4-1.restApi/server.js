@@ -23,7 +23,7 @@ http
         }
 
         if (url === '/users') {
-          res.writeHead(200, { 'Content-Type': 'text/json; charset=utf-8' });
+          res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
           return res.end(JSON.stringify(users));
         }
 
