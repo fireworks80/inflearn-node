@@ -25,3 +25,26 @@
 - 중요한 정보는 서버에서 관리하고 클라이언트에는 세션 키만 제공
 - 서버에 세션 객체 생성 후 uniqueInt(키)를 만들어 속성명으로 사용
 - 속성 값에 정보 저장하고 uniqueInt를 클라이언트에 보냄
+
+### 생겼던 오류들
+
+```
+node:internal/errors:464
+    ErrorCaptureStackTrace(err);
+    ^
+
+TypeError [ERR_INVALID_CHAR]: Invalid character in header content ["Set-Cookie"]
+    at storeHeader (node:_http_outgoing:516:5)
+    at processHeader (node:_http_outgoing:511:3)
+    at ServerResponse._storeHeader (node:_http_outgoing:410:11)
+    at ServerResponse.writeHead (node:_http_server:348:8)
+    at Server.<anonymous> (/Users/nhncommerce/Desktop/study/inflearn-node/4-2.cookieAndSession/cookie-remind.js:16:11)
+    at Server.emit (node:events:394:28)
+    at parserOnIncoming (node:_http_server:927:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17) {
+  code: 'ERR_INVALID_CHAR'
+```
+
+Expires의 날짜를 잘못 써줘서 났음.
+Date 객체의 toUTCString()는 deprecated 되었다고 해서 toUTCString()로 변경
+Expires앞에 개행을 해줘도 같은 오류가 발생 한다.

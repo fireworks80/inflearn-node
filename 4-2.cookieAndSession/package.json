@@ -4,7 +4,8 @@
   "description": "## 요청의 단점",
   "main": "cookie.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon cookie-remind.js"
   },
   "keywords": [],
   "author": "",
