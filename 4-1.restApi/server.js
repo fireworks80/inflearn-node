@@ -2,7 +2,10 @@ const http = require('http');
 const fs = require('fs').promises;
 const port = 8080;
 
-const users = {};
+const users = [
+  { id: 1, name: 'hello' },
+  { id: 2, name: 'bello' },
+];
 
 http
   .createServer(async (req, res) => {
@@ -10,11 +13,11 @@ http
 
     try {
       if (method === 'GET') {
-        if (url === '/') {
-          res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-          const data = await fs.readFile('./index.html');
-          return res.end(data);
-        } // if
+        // if (url === '/') {
+        //   res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+        //   const data = await fs.readFile('./index.html');
+        //   return res.end(data);
+        // } // if
 
         if (url === '/about') {
           res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
@@ -49,7 +52,7 @@ http
           return req.on('end', () => {
             const { name } = JSON.parse(data);
             const id = Date.now();
-            users[id] = name;
+            users.push({ id, name });
 
             res.writeHead(201, { 'Content-Type': 'text/plain; charset=utf-8' });
             res.end('ok');
@@ -77,7 +80,8 @@ http
       if (method === 'DELETE') {
         if (url.startsWith('/user/')) {
           const key = url.split('/')[2];
-          delete users[key];
+
+          users = users.filter((user) => user.id !== key);
 
           res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
           return res.end('ok');
